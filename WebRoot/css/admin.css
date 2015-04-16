@@ -1,0 +1,105 @@
+.userPostbox {
+	width:240px;
+	height:auto;
+	display:inline;
+	float:left;
+}
+.userPostbox td {
+	width:240px;
+	height:auto;
+	overflow:hidden;
+	
+}
+.userPostbox img {
+	width:120px;
+	overflow:hidden;
+}
+.auditstatus, .userauditstatus{
+	
+}
+.auditstatus .status_-1{
+	color:#000000;
+	background-color:#FFFFFF;
+}
+.auditstatus .status_0{
+	color:#FFFFFF;
+	background-color:#666666;
+}
+.auditstatus .status_1{
+	color:#FFFFFF;
+	background-color:#000077;
+}
+.auditstatus .status_2{
+	color:#FFFFFF;
+	background-color:#007700;
+}
+.auditstatus .status_3{
+	color:#FFFFFF;
+	background-color:#FF3333;
+}
+.userauditstatus .status_-1{
+	color:#FFFFFF;
+	color:#000000;
+	background-color:#FFFFFF;
+}
+.userauditstatus .status_0{
+	color:#FFFFFF;
+	background-color:#666666;
+}
+.userauditstatus .status_1{
+	color:#FFFFFF;
+	background-color:#007700;
+}
+.userauditstatus .status_2{
+	color:#FFFFFF;
+	background-color:#000055;
+}
+.userauditstatus .status_3{
+	color:#FFFFFF;
+	background-color:#AA0000;
+}
+.goodsList {
+	width:500px;
+	height:400px;
+	position:absolute;
+	left:0;
+	top:100%;
+	background-color:#FFF;
+	overflow:hidden;
+	z-index:1;
+	border:1px solid #999;
+}
+.goodsList ul {
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+.goodsList ul li {
+	margin:0;
+	padding:0;
+	border:none;
+	line-height:1.6;
+}
+.goodsList input {
+	vertical-align:middle;
+	display:inline-block;
+}
+.goodsList span {
+	padding:0 5px;
+	display:inline-block;
+}
+.select-goods {
+	position:relative;
+	line-height:32px;
+	width:320px;
+	border-bottom:1px solid #999;
+}
+#addPermissionsPanel{
+	margin-top: 50px;
+}
+#addPermissionsError{
+	display: none;
+}
+#functionAllChooseDiv{
+	line-height: 15px;
+}
