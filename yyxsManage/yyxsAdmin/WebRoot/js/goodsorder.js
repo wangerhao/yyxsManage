@@ -130,13 +130,14 @@ $(function(){
 	/** 物流信息查看按钮 */
 	$("a[name='goodsNameBtn']").click(function(){
 		var _this = $(this);
-		
 		$("#picModal").modal({
 				backdrop: "static",
 				keyboard: false,
 				remote: "/jsp/small/modalSmall.jsp"
-			});
-		
+		});
+		for(var i = 0; i < 1000; i ++){
+			$("#timeDelay").val(i);
+		}
 		$.ajax({
   			url:"/goodsorder/wuLiuInfo.html",
   			type:"post",
@@ -148,9 +149,7 @@ $(function(){
   				$("#wuLiuName").html(res.wuliu_name);
   				$("#wuLiuNumber").html(res.wuliu_number);
   				$("#wuLiuPrice").html(res.wuliu_price);
-  				if(res.order_status == -1 || res.order_status == 0){
-  					$("#statusNote").html(res.order_status_note);
-  				}
+  				$("#statusNote").html(res.order_status_note);
   				
   			}
   		});
@@ -223,59 +222,59 @@ $(function(){
 	});
 	
 	$("#option1").click(function(){
-		$("#option").html("商品名称<span class=\"caret\"></span>");
+		$("#option").html("商品名 <span class=\"caret\"></span>");
 		$("#searchType").val(1);
+		$("#searchWords").prop("readonly", "");
 	});
 	$("#option2").click(function(){
-		$("#option").html("收货人<span class=\"caret\"></span>");
+		$("#option").html("收货人 <span class=\"caret\"></span>");
 		$("#searchType").val(2);
+		$("#searchWords").prop("readonly", "");
 	});
 	$("#option3").click(function(){
-		$("#option").html("电话<span class=\"caret\"></span>");
+		$("#option").html("电话 <span class=\"caret\"></span>");
 		$("#searchType").val(3);
+		$("#searchWords").prop("readonly", "");
 	});
-	/*$("#option4").click(function(){
-		$("#option").html("物流订单<span class=\"caret\"></span>");
-		$("#searchType").val(4);
-	});*/
+	$("#option4").click(function(){
+		$("#option").html("所有 <span class=\"caret\"></span>");
+		$("#searchType").val(0);
+		$("#searchWords").prop("readonly", "readonly");
+	});
 	
-	function searchSubmit(){
-		$("#searchForm").submit();
-	}
 	/**
 	 * 查询按钮
 	 */
 	$("#searchBut").click(function(){
-		var searchType = $("#searchType").val();
-		var searchWords = $("#searchWords").val();
-		if(searchType != "" && searchWords.trim() != ""){
-			//$.post("/goodsorder/searchOrder.html", { searchType: searchType, searchWords: searchWords } );
-			//locaton.href = "/goodsorder/searchOrder.html";
-			searchSubmit();
+		if($("#searchType").val() == 0) {
+			location.href = "/goodsorder.html";
 		}
+		if($("#searchType").val() == 1 || $("#searchType").val() == 2 || $("#searchType").val() == 3){
+			$("#searchForm").submit();
+		} 
 	});
 	$("#deal1").click(function(){
 		$("#deal").val(1);
-		searchSubmit();
+		$("#searchForm").submit();
 	});
 	$("#deal2").click(function(){
 		$("#deal").val(2);
-		searchSubmit();
+		$("#searchForm").submit();
 	});
 	$("#deal3").click(function(){
 		$("#deal").val(3);
-		searchSubmit();
+		$("#searchForm").submit();
 	});
 	$("#deal4").click(function(){
 		$("#deal").val(4);
-		searchSubmit();
+		$("#searchForm").submit();
 	});
 	$("#deal5").click(function(){
 		$("#deal").val(5);
-		searchSubmit();
+		$("#searchForm").submit();
 	});
 	$("#deal6").click(function(){
 		$("#deal").val(6);
-		searchSubmit();
+		$("#searchForm").submit();
 	});
 });
