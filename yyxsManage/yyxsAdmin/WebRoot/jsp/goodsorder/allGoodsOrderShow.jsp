@@ -53,7 +53,7 @@
 										<div class="input-group" style="margin-top: 10px">
 											<div class="input-group-btn">
 												<button id="option" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-													${searchType == null || searchType == 0 ? "所有 <span class=\"caret\"></span>" : ""}${searchType == 1 ? "商品名称 <span class=\"caret\"></span>" : ""}${searchType == 2 ? "收货人 <span class=\"caret\"></span>" : ""}${searchType == 3 ? "电话 <span class=\"caret\"></span>" : ""}
+													${searchType == null || searchType == 0 ? "所有 <span class=\"caret\"></span>" : ""}${searchType == 1 ? "商品名 <span class=\"caret\"></span>" : ""}${searchType == 2 ? "收货人 <span class=\"caret\"></span>" : ""}${searchType == 3 ? "电话 <span class=\"caret\"></span>" : ""}
 												</button>
 												<ul class="dropdown-menu" role="menu">
 													<li>
@@ -76,7 +76,7 @@
 											<form id="searchForm" action="/goodsorder/searchOrder.html" method="post">
 												<input id="searchType" name="searchType" type="hidden" value="${searchType}"/>
 												<input id="deal" name="deal" type="hidden" value="${deal}"/>
-												<input id="searchWords" name="searchWords" type="text" class="form-control" value="${searchWords}" placeholder="Search for..." readonly="readonly">
+												<input id="searchWords" name="searchWords" type="text" class="form-control" value="${searchWords}" placeholder="Search for..." ${searchType != 1 && searchType != 2 && searchType != 3 ? 'readonly' : ''}>
 											</form>
 											<span class="input-group-btn">
 												<button id="searchBut" class="btn btn-default" type="button">
