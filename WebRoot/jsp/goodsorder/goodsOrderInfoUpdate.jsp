@@ -19,12 +19,14 @@
 	   <c:set var="to_send_goods_order_status" value="<%=YYXSAdminConstant.TO_SEND_GOODS_ORDER_STATUS %>"></c:set>
 	   <c:set var="has_sent_goods_order_status" value="<%=YYXSAdminConstant.HAS_SENT_GOODS_ORDER_STATUS %>"></c:set>
 	   <c:set var="has_completed_order_status" value="<%=YYXSAdminConstant.HAS_COMPLETED_ORDER_STATUS %>"></c:set>
+	   <c:set var="allOrderAddress" value="/goodsorder.html?currentPage=${currentPage}"></c:set>
+	   <c:set var="searchAddress" value="/goodsorder/searchOrder.html?currentPage=${currentPage}&deal=${deal}"></c:set>
 	   <c:import url="/jsp/common/header.jsp"></c:import>
 	   <div class="container">
 			<div class="page-header">
 				<ol class="breadcrumb">
 					<li><a href="/menu.html">后台管理菜单</a></li>
-					<li><a href="/goodsorder.html">商品订单</a></li>
+					<li><a href="${dataSaveType == 'allOrder' ? allOrderAddress : ''}${dataSaveType == 'search' ? searchAddress : ''}">商品订单</a></li>
 					<li class="active">商品订单信息修改</li>
 				</ol>
 			</div>
