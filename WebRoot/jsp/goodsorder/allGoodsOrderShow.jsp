@@ -88,22 +88,22 @@
 								<div class="col-md-6">
 									<ul class="pager">
 										<li class="previous">
-											<a id="deal6" href="javascript:void(0)">看今天</a>
+											<a id="deal6" href="javascript:void(0)" style="background-color:${deal == 6 ? '#00BFFF' : ''}">看今天</a>
 										</li>
 										<li class="previous">
-											<a id="deal1" href="javascript:void(0)">待处理</a>
+											<a id="deal1" href="javascript:void(0)" style="background-color:${deal == 1 ? '#00BFFF' : ''}">待处理</a>
 										</li>
 										<li class="previous">
-											<a id="deal2" href="javascript:void(0)">待发货</a>
+											<a id="deal2" href="javascript:void(0)" style="background-color:${deal == 2 ? '#00BFFF' : ''}">待发货</a>
 										</li>
 										<li class="previous">
-											<a id="deal3" href="javascript:void(0)">已发货</a>
+											<a id="deal3" href="javascript:void(0)" style="background-color:${deal == 3 ? '#00BFFF' : ''}">已发货</a>
 										</li>
 										<li class="previous">
-											<a id="deal4" href="javascript:void(0)">已完成</a>
+											<a id="deal4" href="javascript:void(0)" style="background-color:${deal == 4 ? '#00BFFF' : ''}">已完成</a>
 										</li>
 										<li class="previous">
-											<a id="deal5" href="javascript:void(0)">订单失败</a>
+											<a id="deal5" href="javascript:void(0)" style="background-color:${deal == 5 ? '#00BFFF' : ''}">订单失败</a>
 										</li>
 									</ul>
 								</div>
