@@ -14,12 +14,10 @@ import org.nutz.mvc.annotation.Ok;
 import org.nutz.mvc.annotation.Param;
 
 import com.meinvli.util.MeinvliUtil;
-import com.yyxs.admin.constant.YYXSAdminConstant;
 import com.yyxs.admin.filter.AddLogFilter;
 import com.yyxs.admin.filter.AuthFilter;
 import com.yyxs.admin.filter.SessionFilter;
 import com.yyxs.admin.service.goodsorder.GoodsOrderService;
-import com.yyxs.admin.util.StringUtil;
 import com.yyxs.admin.util.YYXSAdminUtil;
 
 /**
@@ -35,7 +33,6 @@ public class GoodsOrderAction {
 	 */
 	@At("/")
 	@Ok("jsp:/jsp/goodsorder/allGoodsOrderShow.jsp")
-	//@Ok(">>:/goodsorder/wuLiuInfo.html")
 	@Filters({ @By(type = SessionFilter.class), @By(type = AuthFilter.class),@By(type = AddLogFilter.class)})
 	public void allGoodsOrderShow(@Param("currentPage") int currentPage){
 		try {
@@ -44,10 +41,7 @@ public class GoodsOrderAction {
 			List<Map<Object, Object>> goodsOrderList = GoodsOrderService.getInstance().allGoodsOrderShow(currentPage == 0 ? 1 : currentPage);
 			MeinvliUtil.convertDatetimeTo_yyyyMMddhhMMss(goodsOrderList, "systime");
 			Mvcs.getReq().setAttribute("goodsOrderList", goodsOrderList);
-			Mvcs.getReq().setAttribute("DEFAULT_MAX_RESULT", YYXSAdminConstant.DEFAULT_MAX_RESULT);
 			YYXSAdminUtil.savePageInfo(currentPage, "allOrder",total);
-			//new JspView("/jsp/goodsorder/allGoodsOrderShow.jsp");
-			
 		} catch (Throwable e) {
 			YYXSAdminUtil.log(e.getMessage(), e);
 		}
@@ -68,12 +62,6 @@ public class GoodsOrderAction {
 				return StringUtils.EMPTY;
 			}
 			Map<Object, Object> wuLiuInfoMap = wuLiuInfoList.get(0);
-			/*if( StringUtil.isNullOrBlank(wuLiuInfoMap.get("order_status_note").toString())){
-				wuLiuInfoMap.remove("order_status_note");
-				wuLiuInfoMap.remove("wuliu_number");
-				wuLiuInfoMap.remove("wuliu_name");
-			}*/
-//			return new JSONObject(wuLiuInfoMap.toString()).toString();
 			return new JSONObject(wuLiuInfoMap).toString();
 		} catch (Throwable e) {
 			YYXSAdminUtil.log(e.getMessage(), e);
@@ -93,11 +81,12 @@ public class GoodsOrderAction {
 	 * 商品信息修改展示
 	 * @param orderId		-->订单id
 	 * @param currentPage	-->当前页
+	 * @param deal		
 	 */
 	@At
 	@Ok("jsp:/jsp/goodsorder/goodsOrderInfoUpdate.jsp")
 	@Filters({ @By(type = SessionFilter.class), @By(type = AuthFilter.class),@By(type = AddLogFilter.class)})
-	public void goodsOrderInfoUpdateShow(@Param("orderId") int orderId, @Param("currentPage") int currentPage){
+	public void goodsOrderInfoUpdateShow(@Param("orderId") int orderId, @Param("currentPage") int currentPage, @Param("dataSaveType") String dataSaveType, @Param("deal") int deal){
 		try {
 			List<Map<Object, Object>> dataList = GoodsOrderService.getInstance().goodsAndGoodsOrderAndWuLiuData(orderId);
 			if(dataList.size() <= 0){
@@ -105,7 +94,8 @@ public class GoodsOrderAction {
 			}
 			Mvcs.getReq().setAttribute("dataMap", dataList.get(0));
 			Mvcs.getReq().setAttribute("currentPage", currentPage);
-			//request.getRequestDispatcher("/jsp/goodsorder/goodsOrderInfoUpdate.jsp").forward(request, response);
+			Mvcs.getReq().setAttribute("dataSaveType", dataSaveType);
+			Mvcs.getReq().setAttribute("deal", deal);
 		} catch (Throwable e) {
 			YYXSAdminUtil.log(e.getMessage(), e);
 		}
@@ -137,6 +127,7 @@ public class GoodsOrderAction {
 				sqlList.add("update yyxs_wuliu set wuliu_name = '" + wuliuName + "',wuliu_number = '" + wuliuNumber + "',wuliu_price = " + wuliuPrice + " where order_id = " + orderId);
 			}
 			GoodsOrderService.getInstance().orderInfoUpdate(sqlList);
+			
 			return "success";
 		} catch (Throwable e) {
 			YYXSAdminUtil.log(e.getMessage(), e);
@@ -144,6 +135,13 @@ public class GoodsOrderAction {
 		}
 	}
 	
+	/**
+	 * 内容搜索
+	 * @param searchType		-->搜索类型(1:商品名称、2：收货人、3：电话)
+	 * @param searchWords		-->搜索的内容
+	 * @param currentPage		-->订单首页面的当前页
+	 * @param deal
+	 */
 	@At
 	@Ok("jsp:/jsp/goodsorder/allGoodsOrderShow.jsp")
 	public void searchOrder(@Param("searchType") int searchType,@Param("searchWords") String searchWords,@Param("currentPage") int currentPage,@Param("deal") int deal){
@@ -157,7 +155,6 @@ public class GoodsOrderAction {
 			Mvcs.getReq().setAttribute("searchWords", searchWords);
 			Mvcs.getReq().setAttribute("searchType", searchType);
 			Mvcs.getReq().setAttribute("deal", deal);
-			Mvcs.getReq().setAttribute("DEFAULT_MAX_RESULT", YYXSAdminConstant.DEFAULT_MAX_RESULT);
 			YYXSAdminUtil.savePageInfo(currentPage, "search", total);
 		} catch (Throwable e) {
 			YYXSAdminUtil.log(e.getMessage(), e);
