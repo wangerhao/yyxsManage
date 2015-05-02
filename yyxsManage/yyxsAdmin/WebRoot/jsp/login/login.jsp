@@ -31,5 +31,6 @@
 		<script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
 		<script type="text/javascript" src="/js/todayuserregistrations.js"></script>
 		<script type="text/javascript" src="/js/login.js"></script>
+		<a href="http://www.ickd.cn/" target="_blank" >快递查询</a>
 	</body>
 </html>
