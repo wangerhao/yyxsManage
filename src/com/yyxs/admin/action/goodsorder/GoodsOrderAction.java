@@ -116,10 +116,10 @@ public class GoodsOrderAction {
 	 */
 	@At
 	@Ok("raw")
-	public String orderInfoUpdate(@Param("orderId") int orderId,@Param("goodsNumber") int goodsNumber, @Param("money") double money, @Param("consignee") String consignee, @Param("mobilePhoneNumber") String mobilePhoneNumber, @Param("detailedAddress") String detailedAddress, @Param("orderStatus") int orderStatus, @Param("orderStatusNote") String orderStatusNote, @Param("wuliuName") String wuliuName, @Param("wuliuNumber") String wuliuNumber, @Param("wuliuPrice") double wuliuPrice){
+	public String orderInfoUpdate(@Param("orderId") int orderId,@Param("goodsNumber") int goodsNumber, @Param("money") double money, @Param("orderType") int orderType, @Param("consignee") String consignee, @Param("mobilePhoneNumber") String mobilePhoneNumber, @Param("detailedAddress") String detailedAddress, @Param("orderStatus") int orderStatus, @Param("orderStatusNote") String orderStatusNote, @Param("wuliuName") String wuliuName, @Param("wuliuNumber") String wuliuNumber, @Param("wuliuPrice") double wuliuPrice){
 		try {
 			List<String> sqlList = new ArrayList<String>();
-			sqlList.add("update yyxs_goods_order set goods_number = " + goodsNumber + ",money = " + money + ",consignee = '" + consignee + "',mobile_phone_number = " + mobilePhoneNumber + ",detailed_address = '" + detailedAddress + "',order_status = " + orderStatus + ",order_status_note = '" + orderStatusNote + "' where id = " + orderId);
+			sqlList.add("update yyxs_goods_order set goods_number = " + goodsNumber + ",money = " + money + ",order_type = " + orderType + ",consignee = '" + consignee + "',mobile_phone_number = " + mobilePhoneNumber + ",detailed_address = '" + detailedAddress + "',order_status = " + orderStatus + ",order_status_note = '" + orderStatusNote + "' where id = " + orderId);
 			int count = GoodsOrderService.getInstance().orderWuLiuCount(orderId);
 			if(count <= 0){
 				sqlList.add("insert into yyxs_wuliu(wuliu_name,wuliu_number,wuliu_price,order_id) values('" + wuliuName + "','" + wuliuNumber + "'," + wuliuPrice + "," + orderId + ")");
