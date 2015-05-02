@@ -22,7 +22,6 @@
 		<c:set var="has_completed_order_status" value="<%=YYXSAdminConstant.HAS_COMPLETED_ORDER_STATUS %>"></c:set>
 		<c:set var="default_max_result" value="<%=YYXSAdminConstant.DEFAULT_MAX_RESULT %>"></c:set>
 		
-		<c:set var="weiku_good_id" value="<%=YYXSAdminConstant.WEIKU_GOOD_ID %>"></c:set>
 		<c:set var="weiku_l_model" value="<%=YYXSAdminConstant.WEIKU_L_MODEL %>"></c:set>
 		<c:set var="weiku_xl_model" value="<%=YYXSAdminConstant.WEIKU_XL_MODEL %>"></c:set>
 		<c:set var="weiku_xxl_model" value="<%=YYXSAdminConstant.WEIKU_XXL_MODEL %>"></c:set>
