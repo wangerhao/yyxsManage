@@ -51,4 +51,13 @@ public class YYXSAdminConstant {
 	
 	/** 已完成订单状态标识 */
 	public static int HAS_COMPLETED_ORDER_STATUS = 4;
+	
+	/** 卫裤L型号标示 */
+	public static int WEIKU_L_MODEL = 1;
+	
+	/** 卫裤XL型号标示 */
+	public static int WEIKU_XL_MODEL = 2;
+	
+	/** 卫裤XXL型号标示*/
+	public static int WEIKU_XXL_MODEL = 3;
 }

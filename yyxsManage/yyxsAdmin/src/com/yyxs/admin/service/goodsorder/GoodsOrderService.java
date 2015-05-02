@@ -149,7 +149,7 @@ public class GoodsOrderService {
 	 * @throws Throwable
 	 */
 	public List<Map<Object, Object>> wuLiuInfo(int orderid) throws Throwable {
-		String sql = "SELECT w.id,go.detailed_address,go.order_status,go.order_status_note,w.wuliu_name,w.wuliu_number,w.wuliu_price,g.good_name FROM yyxs_goods_order go,yyxs_wuliu w,yyxs_goods g WHERE go.good_id=g.id and go.id = w.order_id and w.order_id = ?";
+		String sql = "SELECT w.id,go.detailed_address,go.order_status,go.order_status_note,w.wuliu_name,w.wuliu_number,w.wuliu_price,g.good_name,go.order_color,go.order_type,g.id as gid FROM yyxs_goods_order go,yyxs_wuliu w,yyxs_goods g WHERE go.good_id=g.id and go.id = w.order_id and w.order_id = ?";
 		List<Object> paramList = Arrays.asList((Object)orderid);
 		return dbo.retrieveSQL(sql, paramList);
 	}
@@ -160,7 +160,7 @@ public class GoodsOrderService {
 	 * @throws Throwable
 	 */
 	public List<Map<Object, Object>> getOrderInfo(int orderid) throws Throwable{
-		String sql = "SELECT go.detailed_address,g.good_name FROM yyxs_goods_order go,yyxs_goods g WHERE go.good_id=g.id and go.id=?";
+		String sql = "SELECT go.detailed_address,g.good_name,go.order_color,go.order_type,g.id as gid FROM yyxs_goods_order go,yyxs_goods g WHERE go.good_id=g.id and go.id = ?";
 		List<Object> paramList = Arrays.asList((Object)orderid);
 		return dbo.retrieveSQL(sql, paramList);
 	}
@@ -171,7 +171,7 @@ public class GoodsOrderService {
 	 * @throws Throwable 
 	 */
 	public List<Map<Object, Object>> goodsAndGoodsOrderAndWuLiuData(int orderId) throws Throwable {
-		String sql = "SELECT g.id as gid,g.good_name,go.money,go.id as goid,go.goods_number,go.consignee,go.mobile_phone_number,go.detailed_address,go.order_status,go.order_status_note,w.id as wid,w.wuliu_name,w.wuliu_number,w.wuliu_price FROM yyxs_goods g,yyxs_goods_order go,yyxs_wuliu w WHERE go.id = ? and go.id = w.order_id and go.good_id = g.id";
+		String sql = "SELECT g.id as gid,g.good_name,go.money,go.id as goid,go.goods_number,go.consignee,go.mobile_phone_number,go.detailed_address,go.order_status,go.order_status_note,go.order_type,w.id as wid,w.wuliu_name,w.wuliu_number,w.wuliu_price FROM yyxs_goods g,yyxs_goods_order go,yyxs_wuliu w WHERE go.id = ? and go.id = w.order_id and go.good_id = g.id";
 		List<Object> paramList = Arrays.asList((Object)orderId);
 		return dbo.retrieveSQL(sql, paramList);
 	}
@@ -182,7 +182,7 @@ public class GoodsOrderService {
 	 * @throws Throwable 
 	 */
 	public List<Map<Object, Object>> goodsAndGoodsOrdeData(int orderId) throws Throwable {
-		String sql = "SELECT g.id as gid,g.good_name,go.money,go.id as goid,go.consignee,go.detailed_address,go.goods_number,go.mobile_phone_number,go.order_status,go.order_status_note FROM yyxs_goods g,yyxs_goods_order go WHERE g.id = go.good_id and go.id = ?";
+		String sql = "SELECT g.id as gid,g.good_name,go.money,go.id as goid,go.consignee,go.detailed_address,go.goods_number,go.mobile_phone_number,go.order_status,go.order_status_note,go.order_type FROM yyxs_goods g,yyxs_goods_order go WHERE g.id = go.good_id and go.id = ?";
 		List<Object> paramList = Arrays.asList((Object)orderId);
 		return dbo.retrieveSQL(sql, paramList);
 	}
