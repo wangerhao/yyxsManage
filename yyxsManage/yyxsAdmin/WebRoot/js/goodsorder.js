@@ -135,7 +135,7 @@ $(function(){
 				keyboard: false,
 				remote: "/jsp/small/modalSmall.jsp"
 		});
-		for(var i = 0; i < 1000; i ++){
+		for(var i = 0; i < 1000; i++){
 			$("#timeDelay").val(i);
 		}
 		$.ajax({
@@ -145,6 +145,18 @@ $(function(){
   			data:{"goodsid":_this.attr("goodsid")},
   			success:function(res){
   				$(".modal-title").html(res.good_name);
+  				if(res.order_type != "" && res.order_type > 0){
+  					$("#goodType").parents("tr").show();
+  					if(res.order_type == $("#weikuLModel").val()){
+  						$("#goodType").html("L号(黑色)");
+  					}
+  					if(res.order_type == $("#weikuXLModel").val()){
+  						$("#goodType").html("XL号(黑色)");
+  					}
+  					if(res.order_type == $("#weikuXXLModel").val()){
+  						$("#goodType").html("XXL号(黑色)");
+  					}
+  				}
   				$("#address").html(res.detailed_address);
   				$("#wuLiuName").html(res.wuliu_name);
   				$("#wuLiuNumber").html(res.wuliu_number);
@@ -180,6 +192,24 @@ $(function(){
 		$("#orderStatus").val($("#hasSentGoodsOrderStatus").val());
 		$("#orderStatusDiv").hide();
 		$("#wuliuDiv").show();
+	});
+	/****************************修改订单型号***************************/
+	/** L号按钮 */
+	$("#orderTypeL").click(function(){
+		$("#orderTypeVal").val($(this).children().html());
+		$("#orderType").val(1);
+	});
+	
+	/** XL号按钮 */
+	$("#orderTypeXL").click(function(){
+		$("#orderTypeVal").val($(this).children().html());
+		$("#orderType").val(2);
+	});
+	
+	/** XXL号按钮 */
+	$("#orderTypeXXL").click(function(){
+		$("#orderTypeVal").val($(this).children().html());
+		$("#orderType").val(3);
 	});
 	
 	/** 订单失败按钮 */

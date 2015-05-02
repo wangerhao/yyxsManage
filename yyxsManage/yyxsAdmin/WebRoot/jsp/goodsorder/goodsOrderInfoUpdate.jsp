@@ -63,6 +63,25 @@
 										</div>
 									</div>
 								</div>
+								<c:if test="${dataMap.order_type != '' && dataMap.order_type > 0}">
+									<div class="row">
+										<div class="col-md-1"></div>
+										<div class="col-md-10">
+											<div class="input-group">
+											  <div class="input-group-btn">
+										        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">商品类型&nbsp;<span class="caret"></span></button>
+										        <ul class="dropdown-menu" role="menu">
+										          <li><a href="javascript:void(0)" id="orderTypeL">1、<span>L号</span></a></li>
+										          <li><a href="javascript:void(0)" id="orderTypeXL">2、<span>XL号</span></a></li>
+										          <li><a href="javascript:void(0)" id="orderTypeXXL">3、<span>XXL号</span></a></li>
+										        </ul>
+										      </div>
+											  <input type="text" class="form-control" placeholder="请选择商品类型!" aria-describedby="basic-addon1" readonly="readonly" value="${dataMap.order_type == 1 ? 'L号' : ''}${dataMap.order_type == 2 ? 'XL号' : ''}${dataMap.order_type == 3 ? 'XXL号' : ''}" id="orderTypeVal"/>
+											  <input type="hidden" id="orderType" name="orderType" value="${dataMap.order_type}"/>
+											</div>
+										</div>
+									</div>
+								</c:if>
 								<div class="row">
 									<div class="col-md-1"></div>
 									<div class="col-md-10">
