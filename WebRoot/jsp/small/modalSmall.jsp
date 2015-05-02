@@ -14,6 +14,10 @@
 						<td style="width: 20%"><strong>收货地址：<br/><br/></strong></td>
 						<td style="table-layout:fixed; word-break: break-all; overflow:hidden;"><span id="address"></span><br/><br/></td>
 					</tr>
+					<tr style="display: none;">
+						<td style="width: 20%"><strong>卫裤型号：<br/><br/></strong></td>
+						<td style="table-layout:fixed; word-break: break-all; overflow:hidden;"><span id="goodType"></span><br/><br/></td>
+					</tr>
 					<tr>
 						<td style="width: 20%"><strong>物流公司：<br/><br/></strong></td>
 						<td style="table-layout:fixed; word-break: break-all; overflow:hidden;"><span id="wuLiuName"></span><br/><br/></td>

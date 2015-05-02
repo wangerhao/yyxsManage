@@ -21,6 +21,11 @@
 		<c:set var="has_sent_goods_order_status" value="<%=YYXSAdminConstant.HAS_SENT_GOODS_ORDER_STATUS %>"></c:set>
 		<c:set var="has_completed_order_status" value="<%=YYXSAdminConstant.HAS_COMPLETED_ORDER_STATUS %>"></c:set>
 		<c:set var="default_max_result" value="<%=YYXSAdminConstant.DEFAULT_MAX_RESULT %>"></c:set>
+		
+		<c:set var="weiku_good_id" value="<%=YYXSAdminConstant.WEIKU_GOOD_ID %>"></c:set>
+		<c:set var="weiku_l_model" value="<%=YYXSAdminConstant.WEIKU_L_MODEL %>"></c:set>
+		<c:set var="weiku_xl_model" value="<%=YYXSAdminConstant.WEIKU_XL_MODEL %>"></c:set>
+		<c:set var="weiku_xxl_model" value="<%=YYXSAdminConstant.WEIKU_XXL_MODEL %>"></c:set>
 		<div id="pageTop"></div>
 		<c:import url="/jsp/common/header.jsp"></c:import>
 		<div class="container">
@@ -173,6 +178,10 @@
 				</div>
 			</div>
 		</div>
+		<input type="hidden" value="${weiku_good_id}" id="weikuGoodId"/>
+		<input type="hidden" value="${weiku_l_model}" id="weikuLModel"/>
+		<input type="hidden" value="${weiku_xl_model}" id="weikuXLModel"/>
+		<input type="hidden" value="${weiku_xxl_model}" id="weikuXXLModel"/>
 		<div class="modal fade" id="picModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 		<input type="hidden" id="timeDelay" />
 		<input type="hidden" value="${dataSaveType}" id="dataSaveType" />
